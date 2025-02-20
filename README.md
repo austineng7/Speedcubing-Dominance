@@ -29,4 +29,4 @@ This project analyzes the most dominant speedcubers in different years based on 
 - **Excel or Google Sheets** (for the data storage)
 
 ## Acknowledgments
-- The stacked area chart data retrieval was based on code from [carykh](https://github.com/carykh).
+- The stacked area chart data retrieval was based on code from [carykh](https://github.com/carykh/WCA_SAC).
