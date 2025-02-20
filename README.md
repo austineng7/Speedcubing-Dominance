@@ -23,7 +23,7 @@ This project analyzes the most dominant speedcubers in different years based on 
 - **Top_Solves_Stacked_Area.png** – Stacked area chart showing trends in top 100 solves.
 - **Top_Averages_Stacked_Area.png** – Stacked area chart showing trends in top 100 averages.
 
-## Requirements (if you plan to use these specific files)
+## Requirements (if you plan to download/use these specific files)
 - **WCA Account/SQL database access** (for running queries)
 - **R with Quarto** (for the analysis)
 - **Excel or Google Sheets** (for the data storage)
