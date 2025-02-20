@@ -1,0 +1,15 @@
+# Ignore temporary files
+*.csv
+*.log
+*.RData
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore RStudio project files
+.Rproj.user/
+*.Rproj
+
+# Ignore Quarto-generated files
+*_files/
