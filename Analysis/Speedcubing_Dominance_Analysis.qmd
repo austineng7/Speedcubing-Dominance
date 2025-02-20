@@ -1,0 +1,89 @@
+---
+title: "Speedcubing Dominance"
+format: 
+  html:
+     df-print: paged
+     embed-resources: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+```
+
+## Appearances in Top 100 Solves Per Year
+
+```{r appearances for single}
+top_solves = read_excel("Top100CubersPerYear.xlsx", sheet = "Top100Singles")
+
+top_solves_per_year = top_solves %>% group_by(Year, Name) %>%
+ summarise(Appearances = n(), .groups = "drop") %>% arrange(desc(Appearances))
+
+top_solves_per_year
+```
+
+\pagebreak
+
+## Most Appearances in Top 100 Solves Per Year
+
+```{r most appearances for single}
+most_top_solves = top_solves_per_year %>% group_by(Year) %>%
+  filter(Appearances == max(Appearances)) %>% arrange(Year)
+
+most_top_solves
+```
+
+\pagebreak
+
+## Appearances in Top 100 Averages Per Year
+
+```{r appearances for avg}
+top_averages = read_excel("Top100CubersPerYear.xlsx", sheet = "Top100Averages")
+
+top_avgs_per_year = top_averages %>% group_by(Year, Name) %>%
+  summarise(Appearances = n(), .groups = "drop") %>% arrange(desc(Appearances))
+
+top_avgs_per_year
+```
+
+\pagebreak
+
+## Most Appearances in Top 100 Averages Per Year
+
+```{r most appearances for avg}
+most_top_avgs = top_avgs_per_year %>% group_by(Year) %>%
+  filter(Appearances == max(Appearances)) %>% arrange(Year)
+
+most_top_avgs
+
+```
+
+\pagebreak
+
+## Total Appearances in Both Top 100s
+
+```{r appearances both}
+top_cubers_per_year = top_avgs_per_year %>%
+  left_join(top_solves_per_year, by = c("Year", "Name")) %>%
+  mutate(Appearances.x = replace_na(Appearances.x, 0),
+         Appearances.y = replace_na(Appearances.y, 0)) %>%
+  mutate(Total_Appearances = Appearances.x + Appearances.y) %>%
+  arrange(desc(Total_Appearances), desc(Appearances.x)) %>% 
+  select(Year, Name, Appearances.x, Appearances.y, Total_Appearances) %>%
+  rename(Averages = Appearances.x, Singles = Appearances.y, Total=Total_Appearances)
+
+top_cubers_per_year
+```
+
+\pagebreak
+
+## Most Dominant Cubers Per Year
+
+```{r most dominant}
+most_dominant = top_cubers_per_year %>% group_by(Year) %>%
+  filter(Total == max(Total)) %>% arrange(Year) %>% 
+  rename(Total_Appearances=Total)
+
+most_dominant
+```
