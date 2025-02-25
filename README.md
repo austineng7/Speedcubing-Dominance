@@ -4,7 +4,7 @@
 This project analyzes the most dominant speedcubers in different years based on their appearances in the top 100 single solves and top 100 averages from the World Cube Association (WCA) database.
 
 ## Data Sources
-- Queries are executed directly from the [WCA database](https://www.worldcubeassociation.org/results) and [WCA Database Query](https://statistics.worldcubeassociation.org/database-query).
+- Queries are executed directly from the [WCA Database Query](https://statistics.worldcubeassociation.org/database-query) and the [WCA database](https://www.worldcubeassociation.org/results).
 - Data includes the top 100 single solves and top 100 averages per year.
 
 ## Files & Structure
